@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/relativeLayout1" android:layout_height="fill_parent" android:background="#ffffff">
+
+		<com.example.steaming.MyVideoView android:id="@+id/videoviewer"
+			android:layout_alignParentTop="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
+		<LinearLayout android:orientation="vertical" android:id="@+id/linearLayout1"
+			android:layout_height="wrap_content"
+			android:layout_alignParentBottom="true" android:layout_width="match_parent">
+			
+		<ProgressBar style="@android:style/Widget.ProgressBar.Horizontal"
+			android:id="@+id/progressBar" android:layout_height="wrap_content"
+			android:progressDrawable="@drawable/progress_drawable"
+			android:progress="0" android:secondaryProgress="0" android:layout_width="match_parent"></ProgressBar>
+		<LinearLayout 
+			android:layout_height="wrap_content" android:id="@+id/linearLayout1"
+			android:gravity="center_vertical" android:layout_width="match_parent">
+			<ToggleButton android:layout_height="wrap_content"
+				android:text="ToggleButton" android:background="@drawable/playtoggle"
+				android:layout_width="wrap_content" android:textOff=""
+				android:textOn="" android:id="@+id/playtogglebutton"></ToggleButton>
+
+			<Button
+			    android:id="@+id/stop"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/stop" >
+</Button>
+			<LinearLayout android:layout_height="match_parent"
+				android:id="@+id/textView1" android:layout_width="wrap_content"
+				android:gravity="center" android:layout_weight="1">
+				<TextView android:textColor="#007af0" android:textSize="16sp"
+					android:typeface="normal" android:textStyle="bold"
+					android:layout_height="wrap_content" android:id="@+id/timeElapsed"
+					android:text="--:--" android:layout_width="wrap_content"></TextView>
+				<TextView android:text="/" android:id="@+id/textView3"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:textColor="#000000" android:textSize="16sp"
+					android:typeface="normal" android:textStyle="bold"></TextView>
+				<TextView android:text="--:--" android:layout_width="wrap_content"
+					android:layout_height="wrap_content" android:textColor="#000000"
+					android:textSize="16sp" android:typeface="normal"
+					android:textStyle="bold" android:id="@+id/timeEnd"></TextView>
+			</LinearLayout>
+			
+		</LinearLayout>	
+			
+	    </LinearLayout>
+
+	</RelativeLayout>
