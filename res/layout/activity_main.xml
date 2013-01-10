@@ -13,10 +13,10 @@
 			android:progressDrawable="@drawable/progress_drawable"
 			android:progress="0" android:secondaryProgress="0" android:layout_width="match_parent"></ProgressBar>
 		<LinearLayout 
-			android:layout_height="wrap_content" android:id="@+id/linearLayout1"
+			android:layout_height="wrap_content" android:id="@+id/linearLayout2"
 			android:gravity="center_vertical" android:layout_width="match_parent">
 			<ToggleButton android:layout_height="wrap_content"
-				android:text="ToggleButton" android:background="@drawable/playtoggle"
+				android:background="@drawable/playtoggle"
 				android:layout_width="wrap_content" android:textOff=""
 				android:textOn="" android:id="@+id/playtogglebutton"></ToggleButton>
 
@@ -25,9 +25,9 @@
 			    android:layout_width="wrap_content"
 			    android:layout_height="wrap_content"
 			    android:background="@drawable/stop" >
-</Button>
+			</Button>
 			<LinearLayout android:layout_height="match_parent"
-				android:id="@+id/textView1" android:layout_width="wrap_content"
+				android:id="@+id/textView1" android:layout_width="0dp"
 				android:gravity="center" android:layout_weight="1">
 				<TextView android:textColor="#007af0" android:textSize="16sp"
 					android:typeface="normal" android:textStyle="bold"
