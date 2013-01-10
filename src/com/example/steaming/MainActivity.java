@@ -55,10 +55,9 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		
 		
 		videoviewer = (MyVideoView) findViewById(R.id.videoviewer);
-		//videoviewer.setVideoURI(Uri.parse("rtsp://v4.cache1.c.youtube.com/CiILENy73wIaGQmC00ZlwwIDOxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp"));
+		videoviewer.setVideoURI(Uri.parse("rtsp://v4.cache1.c.youtube.com/CiILENy73wIaGQmC00ZlwwIDOxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("rtsp://v5.cache5.c.youtube.com/CiILENy73wIaGQmC00ZlwwIDOxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("http://www.youtube.com/v/OwMCw2VG04I")); //not working
-		videoviewer.setVideoURI(Uri.parse("http://aamc.kleward.com/TMS/TMS/Files/UnderstandingCorporateStructuresandTrust.mp4"));
 		//videoviewer.setVideoURI(Uri.parse("http://daily3gp.com/vids/747.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("http://commonsware.com/misc/test2.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("http://www.ooklnet.com/files/381/381489/video.mp4"));
