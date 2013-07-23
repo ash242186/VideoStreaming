@@ -21,6 +21,7 @@ public final class R {
     public static final class id {
         public static final int linearLayout1=0x7f050002;
         public static final int linearLayout2=0x7f050004;
+        public static final int loading=0x7f05000b;
         public static final int playtogglebutton=0x7f050005;
         public static final int progressBar=0x7f050003;
         public static final int relativeLayout1=0x7f050000;

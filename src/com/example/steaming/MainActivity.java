@@ -1,6 +1,8 @@
 package com.example.steaming;
 
 
+
+
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
@@ -28,10 +30,9 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 	private Button stop;
 	private ToggleButton playtogglebutton;
 	private TextView timeEnd, timeElapsed;
-	private ProgressBar progressBar;
+	private ProgressBar progressBar, loading;
 	private MyVideoView videoviewer;
 	private CountDownTimer timer;
-	//private ProgressDialog loading;
 	private int mVideoWidth, mVideoHeight;
 	
 	@Override
@@ -41,26 +42,23 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
 		setContentView(R.layout.activity_main);
 		
-		/*loading = new ProgressDialog(this);
-	      loading.setMessage("Loading...");*/
+		loading = (ProgressBar) findViewById(R.id.loading);
 	     
 		stop = (Button) findViewById(R.id.stop);
 		playtogglebutton = (ToggleButton) findViewById(R.id.playtogglebutton);
 		timeElapsed = (TextView) findViewById(R.id.timeElapsed);
 		timeEnd = (TextView) findViewById(R.id.timeEnd);
 		progressBar = (ProgressBar) findViewById(R.id.progressBar);
-	    
-		playtogglebutton.setOnCheckedChangeListener(checkedchangelistener);
-		
+			
 		
 		
 		videoviewer = (MyVideoView) findViewById(R.id.videoviewer);
-		videoviewer.setVideoURI(Uri.parse("rtsp://v4.cache1.c.youtube.com/CiILENy73wIaGQmC00ZlwwIDOxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp"));
+		//videoviewer.setVideoURI(Uri.parse("rtsp://v4.cache1.c.youtube.com/CiILENy73wIaGQmC00ZlwwIDOxMYESARFEgGUgZ2aWRlb3MM/0/0/0/video.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("rtsp://v5.cache5.c.youtube.com/CiILENy73wIaGQmC00ZlwwIDOxMYDSANFEgGUgZ2aWRlb3MM/0/0/0/video.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("http://www.youtube.com/v/OwMCw2VG04I")); //not working
 		//videoviewer.setVideoURI(Uri.parse("http://daily3gp.com/vids/747.3gp"));
 		//videoviewer.setVideoURI(Uri.parse("http://commonsware.com/misc/test2.3gp"));
-		//videoviewer.setVideoURI(Uri.parse("http://www.ooklnet.com/files/381/381489/video.mp4"));
+		videoviewer.setVideoURI(Uri.parse("http://www.ooklnet.com/files/381/381489/video.mp4"));
 		//videoviewer.setVideoURI(Uri.parse("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));
 		//videoviewer.setVideoURI(Uri.parse("http://dl.dropbox.com/u/80419/santa.mp4"));
 		videoviewer.requestFocus();
@@ -68,18 +66,16 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		videoviewer.setKeepScreenOn(true);
 		videoviewer.setOnErrorListener(this);
 		videoviewer.setOnPreparedListener(this);
-		//loading.show();
 		
-		stop.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-				stopMedia();
-			}
-		});
 	}
 
+	private OnClickListener stoplistener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			stopMedia();
+		}
+	};
 	private OnCheckedChangeListener checkedchangelistener =  new OnCheckedChangeListener(){
 
 		@Override
@@ -101,6 +97,7 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		public boolean onError(MediaPlayer mp, int what, int extra) {
 			// TODO Auto-generated method stub
 			//loading.hide();
+			loading.setVisibility(View.GONE);
 			return false;
 		}
 		
@@ -110,6 +107,9 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		Log.d(TAG, "media player preparing.......");
 		mp.setLooping(true);
 		//loading.hide();
+		playtogglebutton.setOnCheckedChangeListener(checkedchangelistener);
+		stop.setOnClickListener(stoplistener);
+		loading.setVisibility(View.GONE);
 
 		mVideoWidth = mp.getVideoWidth();
         mVideoHeight = mp.getVideoHeight();
@@ -247,8 +247,5 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		}
 		super.onStop();
 	}
-
-	
-
 	
 }
