@@ -1,8 +1,6 @@
 package com.example.steaming;
 
 
-
-
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
@@ -39,7 +37,11 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		System.out.println(getString(R.string.orientation) +"--------------------------orientation value");
+		if(getString(R.string.orientation).equalsIgnoreCase("landscape"))
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+		else
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		setContentView(R.layout.activity_main);
 		
 		loading = (ProgressBar) findViewById(R.id.loading);
@@ -62,13 +64,21 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		//videoviewer.setVideoURI(Uri.parse("rtsp://184.72.239.149/vod/mp4:BigBuckBunny_115k.mov"));
 		//videoviewer.setVideoURI(Uri.parse("http://dl.dropbox.com/u/80419/santa.mp4"));
 		videoviewer.requestFocus();
-		videoviewer.requestFocus();
 		videoviewer.setKeepScreenOn(true);
 		videoviewer.setOnErrorListener(this);
 		videoviewer.setOnPreparedListener(this);
+		//loading.show();
 		
+		/*stop.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View arg0) {
+				// TODO Auto-generated method stub
+				stopMedia();
+			}
+		});*/
 	}
-
+	
 	private OnClickListener stoplistener = new OnClickListener() {
 		
 		@Override
@@ -76,6 +86,7 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 			stopMedia();
 		}
 	};
+
 	private OnCheckedChangeListener checkedchangelistener =  new OnCheckedChangeListener(){
 
 		@Override
@@ -97,7 +108,6 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		public boolean onError(MediaPlayer mp, int what, int extra) {
 			// TODO Auto-generated method stub
 			//loading.hide();
-			loading.setVisibility(View.GONE);
 			return false;
 		}
 		
@@ -150,7 +160,7 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 			// show updated information about the buffering progress
 			@Override
 			public void onBufferingUpdate(MediaPlayer mp, int percent) {
-				Log.d(this.getClass().getName(), "percent: " + percent);
+				Log.d(TAG, "percent: " + percent);
 				progressBar.setSecondaryProgress(percent);
 			}
 		});
@@ -247,5 +257,9 @@ public class MainActivity extends Activity implements OnPreparedListener, OnErro
 		}
 		super.onStop();
 	}
+
 	
+
+	
+
 }

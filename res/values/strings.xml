@@ -2,5 +2,5 @@
 <resources>
 
     <string name="app_name">Steaming</string>
-
+	<string name="orientation">landscape</string>
 </resources>
